@@ -2,26 +2,26 @@
 
 USERID=$(id -u)
 
-VALIDATE(){
-    if [$1 -ne 0]
+VALIDATE() {
+    if [ $1 -ne 0 ]
     then
-        echo "$2..failure"
-        exit1
+        echo "$2... FAILURE"
+        exit 1
     else
-       echo "$2..success"
+        echo "$2... SUCCESS"
     fi
 }
 
-if[ $USERID -ne 0]
+if [ $USERID -ne 0 ]
 then
-    echo "please run this script with root access."
-    exit1
+    echo "Please run this script with root access."
+    exit 1
 else
-    echo "you are super user"
+    echo "You are super user"
 fi
 
 dnf install mysql -y
-VALIDATE $? "installing MYSQL"
+VALIDATE $? "Installing MYSQL"
 
 dnf install git -y
-VALIDATE $? "installing git"
+VALIDATE $? "Installing GIT"
